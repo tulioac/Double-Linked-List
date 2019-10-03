@@ -16,11 +16,11 @@ class DoubleLinkedList {
         System.out.println(linked);
         linked.addLast(2);
         System.out.println(linked);
-        linked.add(1, 7);
+        linked.add(0, 7);
         System.out.println(linked);
         System.out.println();
-        linked.remove(0);
-        System.out.println(linked);
+        linked.remove(1);
+       System.out.println(linked);
     }
 
     // Recursivos
@@ -38,6 +38,18 @@ class DoubleLinkedList {
             node.setNext(new Node());
         } else {
             addLast(node.getNext(), elemento);
+        }
+    }
+
+    public void addFirst(int elemento) {
+        if (this.head.isNil())
+            this.head.setValue(elemento);
+        else {
+            Node newNode = new Node(this.head.getValue(), this.head.getNext(), null);
+
+            this.head.setValue(elemento);
+            this.head.setNext(newNode);
+            newNode.setPrevious(this.head);
         }
     }
 
@@ -91,13 +103,15 @@ class DoubleLinkedList {
 
     // Iterativos
     public void add(int index, int elemento) {
-        if (index == this.size())
+        if (index == this.size()) {
             addLast(elemento);
-        else if (index >= 0 && index < this.size()) {
+        } else if(index == 0) {
+            addFirst(elemento);
+        } else if (index > 0 && index < this.size()) {
             Node node = this.head;
 
             for (int i = 0; i < index - 1; i++) {
-                node.getNext();
+                node = node.getNext();
             }
 
             Node next = node.getNext();
