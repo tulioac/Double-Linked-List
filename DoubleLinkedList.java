@@ -45,11 +45,10 @@ class DoubleLinkedList {
         if (this.head.isNil())
             this.head.setValue(elemento);
         else {
-            Node newNode = new Node(this.head.getValue(), this.head.getNext(), null);
+            Node newNode = new Node(this.head.getValue(), this.head.getNext(), this.head);
 
             this.head.setValue(elemento);
             this.head.setNext(newNode);
-            newNode.setPrevious(this.head);
         }
     }
 
