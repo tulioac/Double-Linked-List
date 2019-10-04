@@ -20,7 +20,7 @@ class DoubleLinkedList {
         System.out.println(linked);
         System.out.println();
         linked.remove(1);
-       System.out.println(linked);
+        System.out.println(linked);
     }
 
     // Recursivos
@@ -33,9 +33,10 @@ class DoubleLinkedList {
     }
 
     private void addLast(Node node, int elemento) {
-        if (node.isNil()) {
-            node.setValue(elemento);
-            node.setNext(new Node());
+        if (node.getNext().isNil()) {
+            node.getNext().setValue(elemento);
+            node.getNext().setNext(new Node());
+            node.getNext().setPrevious(node);
         } else {
             addLast(node.getNext(), elemento);
         }
